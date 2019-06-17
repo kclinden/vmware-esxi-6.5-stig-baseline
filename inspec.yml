@@ -1,0 +1,8 @@
+name: VMware_vSphere_6-5_ESXi_STIG
+title: VMware vSphere 6.5 ESXi Security Technical Implementation Guide
+maintainer: Kasey Linden
+copyright: Kasey Linden
+copyright_email: klinden@vmware.com
+license: Apache 2.0
+summary: "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil."
+version: 0.1.0
