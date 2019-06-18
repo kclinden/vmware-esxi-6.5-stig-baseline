@@ -1,7 +1,7 @@
 # esxi-65-stig-v1r1
 
 ## About
-**Note this Profile is a work in-progress**
+**Note this Profile is a work in-progress** </br>
 InSpec profile to validate the secure configuration of VMware ESXi 6.5, against DISA's VMware ESXi 6.5 Security Technical Implementation Guide (STIG) Version 1, Release 1.
 
 ## Created By
