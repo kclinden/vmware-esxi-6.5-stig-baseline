@@ -35,5 +35,10 @@ run the following command:
 
 Get-VMHostFirewallDefaultPolicy | Set-VMHostFirewallDefaultPolicy
 -AllowIncoming $false -AllowOutgoing $false"
+
+command = 'Get-VMHostFirewallDefaultPolicy'
+describe powercli_command(command) do
+  its('stdout.strip') { should_not match "True" }
 end
 
+end

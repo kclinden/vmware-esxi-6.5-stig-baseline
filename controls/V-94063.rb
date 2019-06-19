@@ -55,5 +55,10 @@ following commands:
 
 Get-VMHost | Get-AdvancedSetting -Name Net.BlockGuestBPDU | Set-AdvancedSetting
 -Value 1"
+
+command = '(Get-VMHost | Get-AdvancedSetting -Name Net.BlockGuestBPDU).Value'
+describe powercli_command(command) do
+  its('stdout.strip') { should match "1" }
 end
 
+end

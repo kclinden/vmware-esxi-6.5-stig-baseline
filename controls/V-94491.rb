@@ -43,8 +43,7 @@ or
 From a PowerCLI command prompt while connected to the ESXi host run the
 following command:
 
-Get-VMHost | Select
-Name,@{N=\"Lockdown\";E={$_.Extensiondata.Config.LockdownMode}}
+Get-VMHost | Select Name,@{N=\"Lockdown\";E={$_.Extensiondata.Config.LockdownMode}}
 
 If \"Lockdown Mode\" is disabled, this is a finding."
   tag "fix": "From the vSphere Web Client, select the ESXi Host and go to
@@ -60,5 +59,10 @@ $level = \"lockdownNormal\" OR \"lockdownStrict\"
 $vmhost = Get-VMHost -Name <hostname> | Get-View
 $lockdown = Get-View $vmhost.ConfigManager.HostAccessManager
 $lockdown.ChangeLockdownMode($level)"
+
+command = '(Get-VMHost).Extensiondata.Config.LockdownMode'
+describe powercli_command(command) do
+  its('stdout.strip') { should_not match "lockdownDisabled" }
 end
 
+end

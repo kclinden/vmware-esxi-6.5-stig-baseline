@@ -56,5 +56,12 @@ $esxcli.network.firewall.ruleset.set($false,$true,\"sshServer\")
 $esxcli.network.firewall.ruleset.allowedip.add(\"192.168.0.0/24\",\"sshServer\")
 
 This must be done for each enabled service."
+
+
+#(Get-VMHost | Get-VMHostFirewallException | Where {$_.Enabled -eq $true}).ExtensionData.AllowedHosts.AllIP
+command = '(Get-VMHost | Get-VMHostFirewallException | Where {$_.Enabled -eq $true}).ExtensionData.AllowedHosts.AllIP'
+describe powercli_command(command) do
+  its('stdout.strip') { should_not match "True" }
 end
 
+end

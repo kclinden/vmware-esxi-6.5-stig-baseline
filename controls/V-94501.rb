@@ -54,4 +54,3 @@ Get-VMHost | Get-AdvancedSetting -Name Security.PasswordQualityControl |
 Set-AdvancedSetting -Value \"similar=deny retry=3
 min=disabled,disabled,disabled,disabled,15\""
 end
-

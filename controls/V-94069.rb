@@ -53,5 +53,15 @@ Get-VirtualSwitch | Get-SecurityPolicy | Set-SecurityPolicy -AllowPromiscuous
 $false
 Get-VirtualPortGroup | Get-SecurityPolicy | Set-SecurityPolicy
 -AllowPromiscuousInherited $true"
+
+command1 = 'Get-VirtualSwitch | Get-SecurityPolicy | Select AllowPromiscuous -ExpandProperty AllowPromiscuous'
+describe powercli_command(command1) do
+  its('stdout.strip') { should_not match "False" }
 end
 
+command2 = 'Get-VirtualPortGroup | Get-SecurityPolicy | Select AllowPromiscuousInherited -ExpandProperty AllowPromiscuousInherited'
+describe powercli_command(command2) do
+  its('stdout.strip') { should match "True" }
+end
+
+end

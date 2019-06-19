@@ -52,5 +52,10 @@ following command:
 
 Get-VMHost | Get-AdvancedSetting -Name Net.DVFilterBindIpAddress |
 Set-AdvancedSetting -Value \"\""
+
+command = '(Get-VMHost | Get-AdvancedSetting -Name Net.DVFilterBindIpAddress).Value'
+describe powercli_command(command) do
+  its('stdout.strip') { should match "" }
 end
 
+end

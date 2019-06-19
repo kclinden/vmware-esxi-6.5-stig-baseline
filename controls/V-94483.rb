@@ -64,5 +64,11 @@ Get-VMHost | Get-AdvancedSetting -Name UserVars.ESXiVPsDisabledProtocols |
 Set-AdvancedSetting -Value \"tlsv1,tlsv1.1,sslv3\"
 
 A host reboot is required for changes to take effect."
+
+command = '(Get-VMHost | Get-AdvancedSetting -Name UserVars.ESXiVPsDisabledProtocols).Value'
+describe powercli_command(command) do
+  its('stdout.strip') { should match "tlsv1,tlsv1.1,sslv3" }
 end
 
+
+end

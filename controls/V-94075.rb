@@ -52,5 +52,11 @@ following command:
 
 Get-VirtualPortGroup -Name \"portgroup name\" | Set-VirtualPortGroup -VLanId
 \"New VLAN#\""
+
+command = 'Get-VirtualPortGroup | Select VLanId -ExpandProperty VLanId'
+describe powercli_command(command) do
+  its('stdout.strip') { should_not match "4095" }
 end
 
+
+end

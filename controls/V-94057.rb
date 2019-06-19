@@ -55,5 +55,12 @@ following commands:
 
 Get-VMHost | Get-AdvancedSetting -Name Mem.ShareForceSalting |
 Set-AdvancedSetting -Value 2"
+
+
+command = '(Get-VMHost | Get-AdvancedSetting -Name Mem.ShareForceSalting).Value'
+describe powercli_command(command) do
+  its('stdout.strip') { should match "2" }
 end
 
+
+end

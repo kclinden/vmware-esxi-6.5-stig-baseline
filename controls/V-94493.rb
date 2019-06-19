@@ -50,5 +50,10 @@ following commands:
 
 Get-VMHost | Get-AdvancedSetting -Name Syslog.global.logHost |
 Set-AdvancedSetting -Value \"<insert syslog server hostname>\""
+
+command = '(Get-VMHost | Get-AdvancedSetting -Name Syslog.global.logHost).Value'
+describe powercli_command(command) do
+  its('stdout.strip') { should_not match "" }
 end
 
+end

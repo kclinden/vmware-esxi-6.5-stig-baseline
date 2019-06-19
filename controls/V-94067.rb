@@ -55,5 +55,15 @@ following commands:
 Get-VirtualSwitch | Get-SecurityPolicy | Set-SecurityPolicy -MacChanges $false
 Get-VirtualPortGroup | Get-SecurityPolicy | Set-SecurityPolicy
 -MacChangesInherited $true"
+
+command1 = 'Get-VirtualSwitch | Get-SecurityPolicy | Select MacChanges -ExpandProperty MacChanges'
+describe powercli_command(command1) do
+  its('stdout.strip') { should_not match "False" }
 end
 
+command2 = 'Get-VirtualPortGroup | Get-SecurityPolicy | Select MacChangesInherited -ExpandProperty MacChangesInherited'
+describe powercli_command(command2) do
+  its('stdout.strip') { should match "True" }
+end
+
+end
