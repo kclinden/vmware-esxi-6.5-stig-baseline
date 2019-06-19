@@ -51,9 +51,22 @@ following command:
 
 $NTPServers = \"ntpserver1\",\"ntpserver2\"
 Get-VMHost | Add-VMHostNTPServer $NTPServers
-Get-VMHost | Get-VMHostService | Where {$_.Label -eq \"NTP Daemon\"} |
-Set-VMHostService -Policy On
-Get-VMHost | Get-VMHostService | Where {$_.Label -eq \"NTP Daemon\"} |
-Start-VMHostService"
+Get-VMHost | Get-VMHostService | Where {$_.Label -eq \"NTP Daemon\"} | Set-VMHostService -Policy On
+Get-VMHost | Get-VMHostService | Where {$_.Label -eq \"NTP Daemon\"} | Start-VMHostService"
+
+command1 = 'Get-VMHost | Get-VMHostNTPServer'
+describe powercli_command(command1) do
+  its('stdout.strip') { should_not eq "" }
 end
 
+command2 = 'Get-VMHost | Get-VMHostService | Where {$_.Label -eq "NTP Daemon"} | Select Policy -ExpandProperty Policy'
+describe powercli_command(command2) do
+  its('stdout.strip') { should eq "on" }
+end
+
+command3 = 'Get-VMHost | Get-VMHostService | Where {$_.Label -eq "NTP Daemon"} | Select Running -ExpandProperty Running'
+describe powercli_command(command3) do
+  its('stdout.strip') { should eq "True" }
+end
+
+end

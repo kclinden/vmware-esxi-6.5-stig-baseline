@@ -63,5 +63,10 @@ $esxcli.software.acceptance.Set(\"PartnerSupported\")
 
 Note: VMwareCertified or VMwareAccepted may be substituted for
 PartnerSupported, depending upon local requirements."
+
+command = '$esxcli = Get-EsxCli -WarningAction:Ignore;;$esxcli.software.acceptance.get()'
+describe powercli_command(command) do
+  its('stdout.strip') { should_not eq "CommunitySupported" }
 end
 
+end

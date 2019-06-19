@@ -46,5 +46,10 @@ following commands:
 
 Get-VMHost | Get-AdvancedSetting -Name UserVars.DcuiTimeOut |
 Set-AdvancedSetting -Value 600"
+
+command = '(Get-VMHost | Get-AdvancedSetting -Name UserVars.DcuiTimeOut).Value'
+describe powercli_command(command) do
+  its('stdout.strip') { should eq "600" }
 end
 
+end

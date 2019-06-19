@@ -65,5 +65,15 @@ $esxcli = Get-EsxCli
 $esxcli.system.coredump.network.set($null,\"vmkernel port to
 use\",$null,\"CollectorIP\",\"CollectorPort\")
 $esxcli.system.coredump.network.set($true)"
+
+command1 = '$esxcli = Get-EsxCli -WarningAction:Ignore;$esxcli.system.coredump.partition.get().Active'
+describe powercli_command(command1) do
+  its('stdout.strip') { should_not eq "" }
 end
 
+#command2 = '$esxcli = Get-EsxCli -WarningAction:Ignore;$esxcli.system.coredump.network.get().Active'
+#describe powercli_command(command2) do
+#  its('stdout.strip') { should eq "600" }
+#end
+
+end
