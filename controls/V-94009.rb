@@ -53,5 +53,10 @@ following commands:
 Get-VMHost | Get-AdvancedSetting -Name Security.PasswordQualityControl |
 Set-AdvancedSetting -Value \"similar=deny retry=3
 min=disabled,disabled,disabled,disabled,15\""
+
+command = '(Get-VMHost | Get-AdvancedSetting -Name Security.PasswordQualityControl).Value'
+describe powercli_command(command) do
+  its('stdout.strip') { should eq "similar=deny retry=3 min=disabled,disabled,disabled,disabled,15" }
 end
 
+end

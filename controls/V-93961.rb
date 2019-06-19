@@ -214,5 +214,10 @@ Get-VMHost | Get-AdvancedSetting -Name Annotations.WelcomeMessage |
 Set-AdvancedSetting -Value $value
 
 <script end>"
+
+command = '(Get-VMHost | Get-AdvancedSetting -Name Annotations.WelcomeMessage).Value'
+describe powercli_command(command) do
+  its('stdout.strip') { should_not eq "" }
 end
 
+end

@@ -49,5 +49,10 @@ following commands:
 
 Get-VMHost | Get-AdvancedSetting -Name Config.HostAgent.plugins.solo.enableMob
 | Set-AdvancedSetting -Value false"
+
+command = '(Get-VMHost | Get-AdvancedSetting -Name Config.HostAgent.plugins.solo.enableMob).Value'
+describe powercli_command(command) do
+  its('stdout.strip') { should eq "false" }
 end
 
+end

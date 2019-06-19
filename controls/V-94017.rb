@@ -59,5 +59,11 @@ Get-VMHost | Get-VMHostService | Where {$_.Label -eq \"SSH\"} |
 Set-VMHostService -Policy Off
 Get-VMHost | Get-VMHostService | Where {$_.Label -eq \"SSH\"} |
 Stop-VMHostService"
-end
 
+#command = 'Get-VMHost | Get-VMHostService | Where {$_.Label -like "SSH"} | Select Policy, Running | Format-List'
+#describe powercli_command(command) do
+#  its('stdout.strip') { should match "True" }
+#  its('stdout.strip') { should_not match "on" }
+#end
+
+end

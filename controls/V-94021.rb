@@ -58,5 +58,10 @@ following command:
 
 Get-VMHost | Get-VMHostAuthentication | Set-VMHostAuthentication -JoinDomain
 -Domain \"domain name\" -User \"username\" -Password \"password\""
+
+command = '(Get-VMHost | Get-VMHostAuthentication).DomainMembershipStatus'
+describe powercli_command(command) do
+  its('stdout.strip') { should_not eq "" }
 end
 
+end

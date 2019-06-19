@@ -48,5 +48,10 @@ following commands:
 
 Get-VMHost | Get-AdvancedSetting -Name Security.AccountUnlockTime |
 Set-AdvancedSetting -Value 900"
+
+command = '(Get-VMHost | Get-AdvancedSetting -Name Security.AccountUnlockTime).Value'
+describe powercli_command(command) do
+  its('stdout.strip') { should eq "900" }
 end
 
+end

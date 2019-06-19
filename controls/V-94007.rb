@@ -48,5 +48,10 @@ following commands:
 
 Get-VMHost | Get-AdvancedSetting -Name Config.HostAgent.log.level |
 Set-AdvancedSetting -Value \"info\""
+
+command = '(Get-VMHost | Get-AdvancedSetting -Name Config.HostAgent.log.level).Value'
+describe powercli_command(command) do
+  its('stdout.strip') { should eq "info" }
 end
 
+end

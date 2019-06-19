@@ -55,5 +55,9 @@ following command:
 
 Get-VMHost | Get-AdvancedSetting -Name DCUI.Access | Set-AdvancedSetting -Value
 \"root\""
-end
 
+command = 'Get-VMHost | Get-AdvancedSetting -Name DCUI.Access'
+describe powercli_command(command) do
+  its('stdout.strip') { should match 'root' }
+end
+end

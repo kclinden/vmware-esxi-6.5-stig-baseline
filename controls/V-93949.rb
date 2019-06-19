@@ -60,5 +60,11 @@ $lockdown.ChangeLockdownMode($level)
 Note: In strict lockdown mode the DCUI service is stopped. If the connection to
 vCenter Server is lost and the vSphere Web Client is no longer available, the
 ESXi host becomes inaccessible."
+
+command = '(Get-VMHost).Extensiondata.Config.LockdownMode'
+
+describe powercli_command(command) do
+  its('stdout.strip') { should_not match "lockdownDisabled" }
 end
 
+end

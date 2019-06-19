@@ -83,5 +83,10 @@ following commands:
 
 Get-VMHost | Get-AdvancedSetting -Name Config.Etc.issue | Set-AdvancedSetting
 -Value \"<insert logon banner>\""
+
+command = '(Get-VMHost | Get-AdvancedSetting -Name Config.Etc.issue).Value'
+describe powercli_command(command) do
+  its('stdout.strip') { should_not eq "" }
 end
 
+end

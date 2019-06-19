@@ -48,5 +48,10 @@ following command:
 
 Get-VMHost | Get-AdvancedSetting -Name Security.AccountLockFailures |
 Set-AdvancedSetting -Value 3"
+
+command = '(Get-VMHost | Get-AdvancedSetting -Name Security.AccountLockFailures).Value'
+describe powercli_command(command) do
+  its('stdout.strip') { should eq 3 }
 end
 
+end
