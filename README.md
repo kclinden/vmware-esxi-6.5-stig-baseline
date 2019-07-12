@@ -1,4 +1,4 @@
-# esxi-65-stig-v1r1
+# vmware-esxi-6.5-stig-baseline
 
 ## About
 **Note this Profile is a work in-progress** </br>
